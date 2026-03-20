@@ -3,141 +3,174 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Autosfera - Polityka Prywatności</title>
+<title>AutoSfera - Wkrótce Otwarcie</title>
 <link rel="icon" type="image/png" href="logo3.png">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
+  
+  @font-face {
+  font-family: 'Orbitron';
+  src: url('orbitron-bold.ttf') format('truetype');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('inter-light.ttf') format('truetype');
+  font-weight: 300;
+}
+
   :root {
     --primary-color: #ffffff;
-    --glass-bg: rgba(255, 255, 255, 0.05);
-    --glass-border: rgba(255, 255, 255, 0.1);
+    --accent-color: hsl(200, 100%, 60%);
   }
 
   body { 
     margin: 0; 
     padding: 0;
+    overflow: hidden; 
     background: #000; 
     font-family: 'Inter', sans-serif;
     color: white;
-    min-height: 100vh;
   }
 
   canvas { position: fixed; inset: 0; z-index: 1; }
 
-  .container {
+  /* FIX: Warstwa treści - teraz poprawnie centruje wszystko na ekranie */
+  .overlay {
     position: relative;
     z-index: 10;
+    height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 60px 20px;
-    min-height: 100vh;
+    text-align: center;
+    background: radial-gradient(circle, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.6) 100%);
+    padding: 20px;
     box-sizing: border-box;
-    background: radial-gradient(circle, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.8) 100%);
   }
 
-  .policy-box {
-    background: var(--glass-bg);
+  /* Efekt błyszczącego tekstu (Shiny Text) z ReactBits przerobiony na czysty CSS */
+  .shiny-text {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(2.5rem, 12vw, 5.5rem); 
+    font-weight: 700;
+    letter-spacing: 2px; 
+    margin: 0;
+    text-transform: uppercase;
+    
+    /* Gradient z ReactBits */
+    background: linear-gradient(120deg, #b5b5b5 30%, #ffffff 50%, #b5b5b5 70%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    
+    animation: shine 3s linear infinite;
+    filter: drop-shadow(0 4px 10px rgba(0,0,0,0.5));
+    line-height: 1.1;
+  }
+
+  @keyframes shine {
+    0% { background-position: 100% center; }
+    100% { background-position: -100% center; }
+  }
+
+  p {
+    font-size: 1.2rem;
+    font-weight: 300;
+    opacity: 0.8;
+    margin-top: 10px;
+    margin-bottom: 2rem;
+  }
+
+  .signup-form {
+    background: rgba(255, 255, 255, 0.04);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
-    padding: 40px;
-    border-radius: 24px;
-    border: 1px solid var(--glass-border);
-    max-width: 800px;
+    padding: 35px 20px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 520px; 
     width: 100%;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
   }
 
-  h1 {
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-    text-transform: uppercase;
-    letter-spacing: -1px;
-    border-bottom: 1px solid var(--glass-border);
-    padding-bottom: 15px;
-  }
-
-  h2 {
-    font-size: 1.1rem;
-    margin-top: 2rem;
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-
-  p, li {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    font-weight: 300;
-    color: rgba(255, 255, 255, 0.8);
-  }
-
-  ul { padding-left: 20px; }
-
-  .back-link {
-    display: inline-block;
-    margin-top: 2.5rem;
-    color: black;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    background: white;
-    padding: 12px 25px;
+  input[type="email"] {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
     border-radius: 10px;
-    transition: 0.3s;
+    border: none;
+    background: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+    box-sizing: border-box;
   }
 
-  .back-link:hover {
-    transform: scale(1.05);
+  button {
+    width: 100%;
+    padding: 15px;
+    border-radius: 10px;
+    border: none;
+    background: var(--primary-color);
+    color: black;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+  }
+
+  button:hover {
+    transform: scale(1.02);
     background: #e0e0e0;
   }
 
-  /* Scrollbar */
-  ::-webkit-scrollbar { width: 8px; }
-  ::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); }
-  ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 10px; }
-
-  a {
-    color: #fff;
-    text-decoration: none;
+  .consent-label {
+    display: block;
+    font-size: 0.8rem;
+    margin-top: 15px;
+    color: #999;
+    text-align: left;
+    cursor: pointer;
   }
+
+  .footer-links {
+    text-align: center;
+    margin-bottom: -24px;
+    font-size: 0.7rem;
+    opacity: 0.5;
+  }
+
+  a { color: white; text-decoration: underline; }
+
 </style>
 </head>
 <body>
 
 <canvas id="bg"></canvas>
 
-<div class="container">
-  <div class="policy-box">
-    <h1>Polityka Prywatności</h1>
+<div class="overlay">
+  <h1 class="shiny-text">AutoSfera</h1>
+  <p>Zapisz się aby dostać powiadomienie o starcie sklepu. <br> Premiera wkrótce.</p>
+
+  <div class="signup-form">
+  <form id="waitlistForm">
+    <input type="email" placeholder="Wpisz swój e-mail" required>
+    <button type="submit">POWIADOM MNIE</button>
     
-    <p>Prywatność naszych użytkowników jest dla nas priorytetem. Poniżej znajdziesz informacje o tym, jak przetwarzamy Twoje dane w związku z zapisem na listę oczekujących sklepu <strong>AutoSfera</strong>.</p>
+    <label class="consent-label">
+      <input type="checkbox" required> 
+      Wyrażam zgodę na przetwarzanie mojego adresu email w celu otrzymania informacji o starcie sklepu zgodnie z polityką prywatności.
+    </label>
+  </form>
 
-<ol>
-<li><p>Strona umożliwia zapisanie się na listę powiadomień o uruchomieniu sklepu internetowego.</p></li>
+<br>
 
-<li><p>W formularzu zbierany jest wyłącznie adres e-mail użytkownika.</p></li>
+    <p class="footer-links">&copy; 2024 AutoSfera | <a href="polityka.html">Polityka Prywatności</a></p>
 
-<li><p>Dane są przetwarzane wyłącznie w celu wysłania informacji o starcie sklepu oraz przesłania unikalnych ofert startowych dla pierwszych klientów.</p></li>
-
-<li><p>Podanie adresu e-mail jest dobrowolne, jednak niezbędne do otrzymania powiadomienia.</p></li>
-
-<li><p>Dane są przetwarzane na podstawie zgody użytkownika zgodnie z przepisami RODO.</p></li>
-
-<li><p>Dane mogą być przetwarzane przez dostawców usług technicznych obsługujących formularz oraz infrastrukturę strony.</p></li>
-
-<li><p>Dane będą przechowywane do momentu wysłania informacji o starcie sklepu lub do czasu cofnięcia zgody przez użytkownika.</p></li>
-
-<li><p>Użytkownik ma prawo do dostępu do swoich danych, ich poprawienia oraz usunięcia.</p></li>
-
-<li>Administratorem danych osobowych jest właściciel serwisu twojadomena.pl. W sprawach związanych z przetwarzaniem danych można skontaktować się pod adresem: kontakt@twojadomena.pl.</p></li>
-</ol>
-
-    <a href="index.html" class="back-link">← Powrót</a>
-  </div>
 </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
