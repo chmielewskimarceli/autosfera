@@ -3,10 +3,14 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="AutoSfera - Zapisz się na listę oczekujących. Sklep motoryzacyjny, premiera wkrótce." />
 <title>AutoSfera - Wkrótce Otwarcie</title>
 <link rel="icon" type="image/png" href="logo3.png">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Inter:wght@300;700&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
+
 <style>
   :root {
     --primary-color: #ffffff;
@@ -24,7 +28,6 @@
 
   canvas { position: fixed; inset: 0; z-index: 1; }
 
-  /* FIX: Warstwa treści - teraz poprawnie centruje wszystko na ekranie */
   .overlay {
     position: relative;
     z-index: 10;
@@ -39,7 +42,6 @@
     box-sizing: border-box;
   }
 
-  /* Efekt błyszczącego tekstu (Shiny Text) z ReactBits przerobiony na czysty CSS */
   .shiny-text {
     font-family: 'Orbitron', sans-serif;
     font-size: clamp(2.5rem, 12vw, 5.5rem); 
@@ -48,7 +50,6 @@
     margin: 0;
     text-transform: uppercase;
     
-    /* Gradient z ReactBits */
     background: linear-gradient(120deg, #b5b5b5 30%, #ffffff 50%, #b5b5b5 70%);
     background-size: 200% auto;
     -webkit-background-clip: text;
@@ -58,6 +59,8 @@
     animation: shine 3s linear infinite;
     filter: drop-shadow(0 4px 10px rgba(0,0,0,0.5));
     line-height: 1.1;
+    /* Optymalizacja renderowania animacji */
+    will-change: background-position;
   }
 
   @keyframes shine {
@@ -138,27 +141,24 @@
 
 <canvas id="bg"></canvas>
 
-<div class="overlay">
+<main class="overlay">
   <h1 class="shiny-text">AutoSfera</h1>
-  <p>Zapisz się aby dostać powiadomienie o starcie sklepu. <br> Premiera wkrótce.</p>
+  <p>Zapisz się, aby dostać powiadomienie o starcie sklepu. <br> Premiera wkrótce.</p>
 
   <div class="signup-form">
-  <form id="waitlistForm">
-    <input type="email" placeholder="Wpisz swój e-mail" required>
-    <button type="submit">POWIADOM MNIE</button>
-    
-    <label class="consent-label">
-      <input type="checkbox" required> 
-      Wyrażam zgodę na przetwarzanie mojego adresu email w celu otrzymania informacji o starcie sklepu zgodnie z polityką prywatności.
-    </label>
-  </form>
-
-<br>
-
+    <form id="waitlistForm">
+      <input type="email" id="email" aria-label="Adres e-mail" placeholder="Wpisz swój e-mail" required>
+      <button type="submit">POWIADOM MNIE</button>
+      
+      <label class="consent-label" for="consent">
+        <input type="checkbox" id="consent" required> 
+        Wyrażam zgodę na przetwarzanie mojego adresu email w celu otrzymania informacji o starcie sklepu zgodnie z polityką prywatności.
+      </label>
+    </form>
+    <br>
     <p class="footer-links">&copy; 2024 AutoSfera | <a href="polityka.html">Polityka Prywatności</a></p>
-
-</div>
-</div>
+  </div>
+</main>
 
 <script src="script.js" defer></script>
 </body>
