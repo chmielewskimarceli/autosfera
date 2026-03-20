@@ -1,4 +1,4 @@
-// LOGIKA DYMU (Canvas)
+// LOGIKA DYMU (Canvas) - ZOPTYMALIZOWANA
 const canvas = document.getElementById("bg");
 const ctx = canvas.getContext("2d", { alpha: false });
 
@@ -42,25 +42,31 @@ class SmokeParticle {
     const speed = 0.5 + Math.random() * 1.5;
     this.vx = Math.cos(angle) * speed;
     this.vy = Math.sin(angle) * speed;
-    this.radius = 60 + Math.random() * 100;
-    this.opacity = 0.05 + Math.random() * 0.1;
+    
+    // OPTYMALIZACJA: Większe cząsteczki, żeby zrekompensować ich mniejszą ilość
+    this.radius = 120 + Math.random() * 150; 
+    
+    // OPTYMALIZACJA: Minimalnie wyższa przezroczystość, by utrzymać ten sam efekt "świecenia"
+    this.opacity = 0.08 + Math.random() * 0.15; 
+    
     this.rotation = Math.random() * Math.PI * 2;
     this.spin = (Math.random() - 0.5) * 0.01;
     this.life = 0;
     this.maxLife = 400 + Math.random() * 500;
+    
     if(isInitial) {
         const skip = Math.random() * 0.9;
         this.life = this.maxLife * skip;
         this.x += this.vx * this.life;
         this.y += this.vy * this.life;
-        this.radius += 0.4 * this.life;
+        this.radius += 0.6 * this.life; // dopasowany przyrost promienia
     }
   }
   update() {
     this.life++;
     this.x += this.vx;
     this.y += this.vy;
-    this.radius += 0.4;
+    this.radius += 0.6; // szybszy przyrost, ładniej wypełnia ekran
     this.rotation += this.spin;
     if (this.life >= this.maxLife) this.reset(false);
   }
@@ -72,7 +78,8 @@ class SmokeParticle {
   }
 }
 
-const maxParticles = (w < 768) ? 150 : 350;
+// OPTYMALIZACJA: Drastyczna redukcja liczby pętli, procesor odetchnie
+const maxParticles = (w < 768) ? 35 : 100;
 const particles = Array.from({ length: maxParticles }, () => new SmokeParticle());
 
 function drawLines() {
@@ -108,9 +115,13 @@ function animate() {
   hue = (hue + 0.15) % 360;
   requestAnimationFrame(animate);
 }
-animate();
+
+// OPTYMALIZACJA: Czekamy na pełne załadowanie strony przed startem "ciężkiego" malowania
+window.addEventListener('load', () => {
+  requestAnimationFrame(animate);
+});
 
 document.getElementById('waitlistForm').onsubmit = (e) => {
   e.preventDefault();
-  alert('Dziękujemy! Poinformujemy Cię o starcie Autosfery.');
+  alert('Dziękujemy! Poinformujemy Cię o starcie AutoSfery.');
 };
