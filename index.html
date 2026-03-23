@@ -3,22 +3,24 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="AutoSfera - Zapisz się na listę oczekujących. Sklep motoryzacyjny, premiera wkrótce." />
-<title>AutoSfera - Wkrótce Otwarcie</title>
+<meta name="description" content="AutoSphera - Zapisz się na listę oczekujących. Sklep motoryzacyjny, premiera wkrótce." />
+<title>AutoSphera - Wkrótce Otwarcie</title>
 <link rel="icon" type="image/png" href="logo3.png">
 
 <style>
 
-    @font-face {
+@font-face {
   font-family: 'Orbitron';
-  src: url('orbitron-bold.ttf') format('truetype');
+  src: url('orbitron-bold.woff2') format('woff2');
   font-weight: 700;
+  font-display: swap;
 }
 
 @font-face {
   font-family: 'Inter';
-  src: url('inter-light.ttf') format('truetype');
+  src: url('inter-light.woff2') format('woff2');
   font-weight: 300;
+  font-display: swap;
 }
   
   :root {
@@ -155,11 +157,11 @@
 <canvas id="bg"></canvas>
 
 <main class="overlay">
-  <h1 class="shiny-text">AutoSfera</h1>
+  <h1 class="shiny-text">AutoSphera</h1>
   <p>Zapisz się, aby dostać powiadomienie o starcie sklepu z <strong>kodem rabatowym</strong> <br><br> Premiera wkrótce.</p>
 
   <div class="signup-form">
-    <form id="waitlistForm" action="https://formspree.io/f/mjgaqrjd" method="POST"">
+    <form id="waitlistForm" action="https://formspree.io/f/mjgaqrjd" method="POST">
     <input type="email" name="email" placeholder="Wpisz swój e-mail" required>
       <button type="submit">POWIADOM MNIE</button>
       <label class="consent-label" for="consent">
@@ -167,8 +169,11 @@
         Wyrażam zgodę na przetwarzanie mojego adresu email w celu otrzymania informacji o starcie sklepu zgodnie z polityką prywatności.
       </label>
     </form>
+    <div id="form-status" style="display: none; color: #4ade80; margin-top: 15px; font-weight: 700; font-size: 0.9rem;">
+      Jesteś na liście! Gdy tylko ruszymy, wyślemy na Twój e-mail informację o starcie oraz kod rabatowy na pierwsze zakupy. Do usłyszenia!
+    </div>
     <br>
-    <p class="footer-links">&copy; 2024 AutoSfera | <a href="polityka.html">Polityka Prywatności</a></p>
+    <p class="footer-links">&copy; 2026 AutoSphera | <a href="polityka.html">Polityka Prywatności</a></p>
   </div>
 </main>
 
