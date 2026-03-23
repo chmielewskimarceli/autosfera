@@ -7,6 +7,8 @@ document.getElementById('waitlistForm').onsubmit = async (e) => {
   const data = new FormData(form);
   const button = form.querySelector('button');
 
+  container.style.height = container.offsetHeight + 'px';
+
   button.innerText = "WYSYŁANIE...";
   button.disabled = true;
 
@@ -23,7 +25,7 @@ document.getElementById('waitlistForm').onsubmit = async (e) => {
       setTimeout(() => {
         form.style.display = 'none';
         
-        statusMessage.style.marginTop = "40px"; 
+        statusMessage.style.marginTop = "20px"; 
         statusMessage.classList.add('fade-in');
       }, 400);
 
