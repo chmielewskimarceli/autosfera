@@ -1,5 +1,6 @@
 document.getElementById('waitlistForm').onsubmit = async (e) => {
   e.preventDefault();
+
   const form = e.target;
   const statusMessage = document.getElementById('form-status');
   const button = form.querySelector('button');
@@ -16,10 +17,21 @@ document.getElementById('waitlistForm').onsubmit = async (e) => {
 
     if (response.ok) {
 
+      form.style.transition = "opacity 0.4s ease, transform 0.4s ease";
       form.style.opacity = '0';
+      form.style.transform = 'translateY(-10px)';
       form.style.pointerEvents = 'none'; 
-      
-      statusMessage.style.display = 'block';
+
+      setTimeout(() => {
+
+        statusMessage.style.position = "absolute";
+        statusMessage.style.top = "40px";
+        statusMessage.style.left = "20px";
+        statusMessage.style.right = "20px";
+        
+        statusMessage.classList.add('fade-in');
+      }, 400);
+
     } else {
       throw new Error();
     }
