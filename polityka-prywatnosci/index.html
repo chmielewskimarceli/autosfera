@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AutoSphera - Polityka Prywatności</title>
+<link rel="icon" type="image/png" href="logo.png">
+<style>
+  
+@font-face {
+  font-family: 'Orbitron';
+  src: url('orbitron-bold.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('inter-light.woff2') format('woff2');
+  font-weight: 300;
+  font-display: swap;
+}
+
+  :root {
+    --primary-color: #ffffff;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+  }
+
+  body { 
+    margin: 0; 
+    padding: 0;
+    background: #000; 
+    font-family: 'Inter', sans-serif;
+    color: white;
+    min-height: 100vh;
+  }
+
+  canvas { position: fixed; inset: 0; z-index: 1; }
+
+  .container {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    min-height: 100vh;
+    box-sizing: border-box;
+    background: radial-gradient(circle, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.8) 100%);
+  }
+
+  .policy-box {
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    padding: 40px;
+    border-radius: 24px;
+    border: 1px solid var(--glass-border);
+    max-width: 800px;
+    width: 100%;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  }
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    border-bottom: 1px solid var(--glass-border);
+    padding-bottom: 15px;
+  }
+
+  p, li {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  ul { padding-left: 20px; }
+
+  .back-link {
+    display: inline-block;
+    margin-top: 2.5rem;
+    color: black;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: white;
+    padding: 12px 25px;
+    border-radius: 10px;
+    transition: 0.3s;
+  }
+
+  .back-link:hover {
+    transform: scale(1.05);
+    background: #e0e0e0;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); }
+  ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 10px; }
+
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  strong {
+    font-family: 'Orbitron', sans-serif;
+  }
+
+</style>
+</head>
+<body>
+
+<canvas id="bg"></canvas>
+
+<div class="container">
+  <div class="policy-box">
+    <h1>Polityka Prywatności</h1>
+    
+    <p>Prywatność naszych użytkowników jest dla nas priorytetem. Poniżej znajdziesz informacje o tym, jak przetwarzamy Twoje dane w związku z zapisem na listę oczekujących sklepu <strong>AutoSphera</strong>.</p>
+
+<ol>
+<li><p>Strona umożliwia zapisanie się na listę powiadomień o uruchomieniu sklepu internetowego.</p></li>
+
+<li><p>W formularzu zbierany jest wyłącznie adres e-mail i zgoda użytkownika.</p></li>
+
+<li><p>Dane są przetwarzane wyłącznie w celu wysłania informacji o starcie sklepu oraz przesłania unikalnych ofert startowych dla pierwszych klientów.</p></li>
+
+<li><p>Podanie adresu e-mail jest dobrowolne, jednak niezbędne do otrzymania powiadomienia.</p></li>
+
+<li><p>Dane są przetwarzane na podstawie zgody użytkownika zgodnie z przepisami RODO.</p></li>
+
+<li><p>Dane mogą być przetwarzane przez dostawców usług technicznych obsługujących formularz oraz infrastrukturę strony.</p></li>
+
+<li><p>Dane będą przechowywane do momentu wysłania informacji o starcie sklepu lub do czasu cofnięcia zgody przez użytkownika.</p></li>
+
+<li><p>Użytkownik ma prawo do dostępu do swoich danych, ich poprawienia oraz usunięcia.</p></li>
+
+<li>Administratorem danych osobowych jest właściciel serwisu autosphera.pl. W sprawach związanych z przetwarzaniem danych można skontaktować się pod adresem: autospherashop@icloud.com.</p></li>
+</ol>
+
+    <a href="/" class="back-link">← Powrót</a>
+  </div>
+</div>
+
+</body>
+</html>
