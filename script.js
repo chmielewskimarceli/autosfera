@@ -2,11 +2,13 @@ document.getElementById('waitlistForm').onsubmit = async (e) => {
   e.preventDefault();
 
   const form = e.target;
+  const container = form.closest('.signup-form');
   const statusMessage = document.getElementById('form-status');
   const data = new FormData(form);
   const button = form.querySelector('button');
 
-  // Wizualny feedback - zmieniamy tekst na przycisku podczas wysyłki
+  container.style.height = container.offsetHeight + 'px';
+
   button.innerText = "WYSYŁANIE...";
   button.disabled = true;
 
@@ -18,12 +20,12 @@ document.getElementById('waitlistForm').onsubmit = async (e) => {
     });
 
     if (response.ok) {
-      // 1. Dodajemy klasę zanikania do formularza
       form.classList.add('fade-out');
 
-      // 2. Czekamy 400ms (czas trwania transition) i pokazujemy sukces
       setTimeout(() => {
         form.style.display = 'none';
+        
+        statusMessage.style.marginTop = "40px"; 
         statusMessage.classList.add('fade-in');
       }, 400);
 
@@ -33,5 +35,6 @@ document.getElementById('waitlistForm').onsubmit = async (e) => {
   } catch (error) {
     button.innerText = "BŁĄD. SPRÓBUJ PONOWNIE";
     button.disabled = false;
+    container.style.height = 'auto'; 
   }
 }
