@@ -7,8 +7,6 @@ document.getElementById('waitlistForm').onsubmit = async (e) => {
   const data = new FormData(form);
   const button = form.querySelector('button');
 
-  container.style.height = container.offsetHeight + 'px';
-
   button.innerText = "WYSYŁANIE...";
   button.disabled = true;
 
