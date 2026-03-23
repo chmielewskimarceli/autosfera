@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (form && statusMessage) {
       form.style.display = 'none';
       statusMessage.style.display = 'block';
-      statusMessage.innerText = "Jesteś już na liście oczekujących! Powiadomimy Cię o starcie. 🏎️";
+      statusMessage.innerText = "Jesteś już na liście oczekujących! Powiadomimy Cię o starcie.";
     }
   }
 });
