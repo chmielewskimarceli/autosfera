@@ -21,12 +21,12 @@ document.getElementById('waitlistForm').onsubmit = async (e) => {
   const data = new FormData(form);
   const button = form.querySelector('button');
 
-  const emailValue = data.get('email');
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const emailValue = data.get('email').trim();
+  const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
   if (!emailPattern.test(emailValue)) {
-    alert("Proszę podać poprawny adres e-mail.");
-    return;
+    alert("Adres e-mail wygląda na niepoprawny.");
+    return; 
   }
 
   container.style.height = container.offsetHeight + 'px';
